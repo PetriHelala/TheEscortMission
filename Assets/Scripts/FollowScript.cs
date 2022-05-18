@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowScript : MonoBehaviour
 {
     [SerializeField] Transform Player;
-    [SerializeField] float followSharpness = 0.1f;
+    [SerializeField] [Range(0.001f, 1)] float followSharpness = 0.1f;
 
     Vector3 _followOffset;
 
