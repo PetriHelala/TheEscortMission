@@ -21,7 +21,9 @@ public class EnemyHealth : MonoBehaviour
 
             Debug.Log($"{enemyHealth}");
 
-        } else if (enemyHealth <= 0f) {
+        } 
+        
+        if (enemyHealth <= 0f) {
 
             Destroy(gameObject, 0.2f);
 
