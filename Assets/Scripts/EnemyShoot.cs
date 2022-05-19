@@ -5,28 +5,29 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
 
+    
     public float range, timeToShoot, shotSpeed;
     private float distanceToPlayer;
     public Transform ball, enemyFirePoint;
     public GameObject enemyBullet;
-    GameObject movingEnemy;
+    public GameObject movingEnemy;
+    public Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector2.Distance(movingEnemy.transform.position, ball.position);
+        distanceToPlayer = Vector2.Distance(rb.transform.position, ball.position);
 
         if (distanceToPlayer <= range) {
             StartCoroutine(Shoot());
         }
-
-        
+ 
     }
 
     IEnumerator Shoot()
