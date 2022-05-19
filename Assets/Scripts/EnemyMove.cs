@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyMove : MonoBehaviour
 {
     public GameObject enemyPrefab;
     GameObject movingEnemy;
@@ -14,16 +14,12 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector3 pos2 = new Vector3(-10f, 8.5f, 0f);
     private Vector3 pos3 = new Vector3(10f, 8.5f, 0f);
 
-    public float range, timeToShoot, shotSpeed;
-    private float distanceToPlayer;
-    public Transform ball, enemyFirePoint;
-    public GameObject enemyBullet;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        movingEnemy = enemyPrefab;
+
     }
 
     // Update is called once per frame
@@ -35,10 +31,8 @@ public class EnemyBehaviour : MonoBehaviour
             EnemySpawnAndMove(); 
         }
 
-        distanceToPlayer = Vector2.Distance(movingEnemy.transform.position, ball.position);
-
-        if (distanceToPlayer <= range) {
-            StartCoroutine(Shoot());
+        if (HasSpawned == true && !movingEnemy) {
+            EnemySpawnAndMove();
         }
         
     }
@@ -58,17 +52,13 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
-    {
-        yield return new WaitForSeconds(timeToShoot);
-        GameObject newBullet = Instantiate(enemyBullet, enemyFirePoint.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(ball.transform.position.x, shotSpeed);
-    }
+    
     
     public void EnemySpawnAndMove() 
     {
         movingEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); 
-        movingEnemy.transform.position = pos1;
+        movingEnemy.transform.position = pos1; // väliaikainen siirto, poista kun vihollisen tulo näkyviin lerppauksella on implementoitu
         StartCoroutine(MoveEnemy());
+        
     }
 }
