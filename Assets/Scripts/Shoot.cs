@@ -8,6 +8,7 @@ public class Shoot : MonoBehaviour
     public GameObject bulletPrefab;
     [SerializeField] float bulletForce = 5f;
     PlayerController _playercontroller;  
+    GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,8 @@ public class Shoot : MonoBehaviour
 
     void ShootBullet()
     {
-        GameObject shuriken = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = shuriken.GetComponent<Rigidbody2D>();
+        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         firePoint.transform.localPosition = new Vector3(0f, 0f, 0.5f);
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
@@ -29,6 +30,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             ShootBullet();
+            Destroy(bullet, 2f);
             
         }
     }

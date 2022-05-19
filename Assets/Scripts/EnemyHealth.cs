@@ -19,9 +19,13 @@ public class EnemyHealth : MonoBehaviour
 
             enemyHealth -= 10f;
 
-        } else if (enemyHealth == 0f) {
+            Debug.Log($"{enemyHealth}");
 
-            Destroy(this.gameObject, 0.2f);
+        } else if (enemyHealth <= 0f) {
+
+            Destroy(gameObject, 0.2f);
+
+            Debug.Log("dead");
             
         }
     }
