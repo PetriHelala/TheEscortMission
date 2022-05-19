@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &805523844860413342
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -195,14 +195,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b6884178b9c1e4486e49d2535de6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4930714461902221026}
   range: 5
+  rangeOfShot: 0
   timeToShoot: 3
   shotSpeed: 10
   ball: {fileID: 9135946145966870621, guid: 2e157e2719c48d640aaa6f1281114dce, type: 3}
   enemyFirePoint: {fileID: 2906270034420210463}
-  enemyBullet: {fileID: 8150574899473391532, guid: 44e601436e8a64549a66a029f2107559, type: 3}
   movingEnemy: {fileID: 1066708655898247367}
+  rb: {fileID: 4930714461902221026}
+  enemyBullet: {fileID: 8150574899473391532, guid: 44e601436e8a64549a66a029f2107559, type: 3}
 --- !u!1 &7415646935976713133
 GameObject:
   m_ObjectHideFlags: 0

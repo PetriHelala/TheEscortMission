@@ -6,12 +6,13 @@ public class EnemyShoot : MonoBehaviour
 {
 
     
-    public float range, timeToShoot, shotSpeed;
+    [SerializeField] float range, rangeOfShot, timeToShoot, shotSpeed;
+    [SerializeField] Transform ball, enemyFirePoint;
+    [SerializeField] GameObject movingEnemy;
+    [SerializeField] Rigidbody2D rb;
     private float distanceToPlayer;
-    public Transform ball, enemyFirePoint;
     public GameObject enemyBullet;
-    public GameObject movingEnemy;
-    public Rigidbody2D rb;
+    
 
     // Start is called before the first frame update
     void Start()
