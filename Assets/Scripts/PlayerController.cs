@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     
     private Vector2 movement;
 
+    bool LockControls = false;
+
     void Start() 
     {
         
@@ -24,7 +26,17 @@ public class PlayerController : MonoBehaviour
  
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        if(LockControls == false)
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void LockedControls(){
+        LockControls = true;
+        Invoke("ReleaseControls", 1f);
+    }
+
+    void ReleaseControls(){
+        LockControls = false;
     }
 
     
