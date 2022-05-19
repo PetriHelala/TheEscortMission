@@ -8,6 +8,7 @@ public class FollowScript : MonoBehaviour
     [SerializeField] [Range(0.001f, 1)] float followSharpness = 0.1f;
 
     Vector3 _followOffset;
+    float distance;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class FollowScript : MonoBehaviour
 
     void LateUpdate() 
     {
-        var distance = Vector3.Distance(Player.transform.position, transform.position);
+        distance = Vector3.Distance(Player.transform.position, transform.position);
         if(distance < 5){
             Vector3 targetPosition = Player.position + _followOffset;
             transform.position += (targetPosition - transform.position) * followSharpness;
