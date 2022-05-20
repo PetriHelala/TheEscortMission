@@ -32,10 +32,6 @@ public class EnemyMove : MonoBehaviour
             HasSpawned = true;
             EnemySpawnAndMove(); 
         }
-
-        if (HasSpawned == true && !movingEnemy) {
-            EnemySpawnAndMove();
-        }
         
     }
 
@@ -55,6 +51,7 @@ public class EnemyMove : MonoBehaviour
 
     void StopLerping(){
         StopCoroutine(MoveEnemyCoroutine);
+        Destroy(movingEnemy);
     }
 
     
