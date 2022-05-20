@@ -14,7 +14,9 @@ public class EnemyMove : MonoBehaviour
     private Vector3 pos2 = new Vector3(-10f, 8.5f, 0f);
     private Vector3 pos3 = new Vector3(10f, 8.5f, 0f);
 
+    IEnumerator MoveEnemyCoroutine;
 
+    Vector3[] Positions = {new Vector3(-10f, 8.5f, 0f), new Vector3(10f, 8.5f, 0f)};
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +39,22 @@ public class EnemyMove : MonoBehaviour
         
     }
 
-    IEnumerator MoveEnemy() 
+    IEnumerator MoveEnemy(GameObject GO) 
     {
-        while (true) {
-            
-            yield return LerpFunction.LerpPosition(movingEnemy.transform, pos2, 1f);
+        while (GO) {
+            for (int j = 0; j < Positions.Length; j++){
+                if(GO)
+                    yield return LerpFunction.LerpPosition(movingEnemy.transform, Positions[j], 1f);
+                else{
+                    StopLerping();
+                    break;
+                }
+            }
+       }
+    }
 
-            yield return LerpFunction.LerpPosition(movingEnemy.transform, pos3, 1f);
-
-            yield return LerpFunction.LerpPosition(movingEnemy.transform, pos2, 1f);
-
-            yield return LerpFunction.LerpPosition(movingEnemy.transform, pos3, 1f);
- 
-        }
+    void StopLerping(){
+        StopCoroutine(MoveEnemyCoroutine);
     }
 
     
@@ -58,7 +63,8 @@ public class EnemyMove : MonoBehaviour
     {
         movingEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); 
         movingEnemy.transform.position = pos1; // väliaikainen siirto, poista kun vihollisen tulo näkyviin lerppauksella on implementoitu
-        StartCoroutine(MoveEnemy());
+        MoveEnemyCoroutine = MoveEnemy(movingEnemy);
+        StartCoroutine(MoveEnemyCoroutine);
         
     }
 }

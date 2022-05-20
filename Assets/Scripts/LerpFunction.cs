@@ -8,13 +8,14 @@ public class LerpFunction : MonoBehaviour
     {
         Vector3 startPosition = _transform.position;
         float time = 0;
-        while (time < duration)
+        while (time < duration && _transform != null)
         {
             _transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
-        _transform.position = targetPosition;
+        if(_transform != null)
+            _transform.position = targetPosition;
         
 
 
