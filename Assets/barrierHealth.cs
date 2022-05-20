@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class barrierHealth : MonoBehaviour
 {
     private float enemyHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = 30f;
+        enemyHealth = 100f;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -17,14 +17,12 @@ public class EnemyHealth : MonoBehaviour
 
         if (other.tag == "Bullet") {
             enemyHealth -= 10f;
-            Debug.Log($"{enemyHealth}");
 
         } 
         
         if (enemyHealth <= 0f) {
             Destroy(gameObject, 0.2f);
-            Debug.Log("dead");  
-
+             
         }
     }
 }

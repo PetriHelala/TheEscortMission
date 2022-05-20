@@ -11,8 +11,6 @@ public class EnemyMove : MonoBehaviour
 
     private Vector3 spawnPosition = new Vector3(0f, 12f, 0f);
     private Vector3 pos1 = new Vector3(0f, 8.5f, 0f);
-    private Vector3 pos2 = new Vector3(-10f, 8.5f, 0f);
-    private Vector3 pos3 = new Vector3(10f, 8.5f, 0f);
 
     IEnumerator MoveEnemyCoroutine;
 
@@ -59,7 +57,7 @@ public class EnemyMove : MonoBehaviour
     public void EnemySpawnAndMove() 
     {
         movingEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity); 
-        movingEnemy.transform.position = pos1; // väliaikainen siirto, poista kun vihollisen tulo näkyviin lerppauksella on implementoitu
+        movingEnemy.transform.position = pos1;
         MoveEnemyCoroutine = MoveEnemy(movingEnemy);
         StartCoroutine(MoveEnemyCoroutine);
     }
