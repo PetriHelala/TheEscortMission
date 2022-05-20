@@ -6,7 +6,7 @@ public class BarrierInstantiateAndDestruct : MonoBehaviour
 {
 
     public GameObject barrierPrefab;
-    Vector3[] spawnPositions = {new Vector3(0f, 11f, 0f), new Vector3(0f, 38.5f, 0f), new Vector3(0f, 65f, 0f), new Vector3(0f, 88f, 0f)};
+    Vector3[] spawnPositions = {new Vector3(0f, 11f, 0f), new Vector3(0f, 31f, 0f), new Vector3(0f, 51f, 0f), new Vector3(0f, 71f, 0f)};
     bool barrierHasSpawned;
     
     // Start is called before the first frame update

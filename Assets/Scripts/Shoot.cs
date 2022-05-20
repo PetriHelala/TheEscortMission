@@ -30,7 +30,6 @@ public class Shoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             ShootBullet();
-            Destroy(bullet, 2f);
             
         }
     }

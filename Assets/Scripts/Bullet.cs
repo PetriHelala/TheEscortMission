@@ -21,6 +21,12 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Enemy") {
             Destroy(this.gameObject, 0f);
+        } else {
+            Destroy(this.gameObject, 3f);
+        }
+
+        if (other.tag == "Barrier") {
+            Destroy(this.gameObject);
         }
     }
 }

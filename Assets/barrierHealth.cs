@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class barrierHealth : MonoBehaviour
 {
+
     private float enemyHealth;
 
     // Start is called before the first frame update
@@ -25,4 +26,6 @@ public class barrierHealth : MonoBehaviour
              
         }
     }
+
+    
 }
