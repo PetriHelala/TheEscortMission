@@ -40,7 +40,7 @@ public class EnemyMove : MonoBehaviour
         while (GO) {
             for (int j = 0; j < Positions.Length; j++){
                 if(GO)
-                    yield return LerpFunction.LerpPosition(movingEnemy.transform, Positions[j], 1f);
+                    yield return LerpFunction.LerpPosition(movingEnemy.transform, Positions[j], 3f);
                 else{
                     StopLerping();
                     break;
@@ -62,6 +62,5 @@ public class EnemyMove : MonoBehaviour
         movingEnemy.transform.position = pos1; // väliaikainen siirto, poista kun vihollisen tulo näkyviin lerppauksella on implementoitu
         MoveEnemyCoroutine = MoveEnemy(movingEnemy);
         StartCoroutine(MoveEnemyCoroutine);
-        
     }
 }

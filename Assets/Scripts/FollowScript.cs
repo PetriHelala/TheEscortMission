@@ -5,8 +5,10 @@ using UnityEngine;
 public class FollowScript : MonoBehaviour
 {
     [SerializeField] Transform Player;
-    [SerializeField] [Range(0.001f, 1)] float followSharpness = 0.1f;
+    [SerializeField] [Range(0.001f, 10f)] float followSharpness = 0.1f;
 
+    Vector3 oldPosition;
+    public Vector3 velocity;
     Vector3 _followOffset;
     float distance;
 
@@ -20,7 +22,10 @@ public class FollowScript : MonoBehaviour
         distance = Vector3.Distance(Player.transform.position, transform.position);
         if(distance < 5){
             Vector3 targetPosition = Player.position + _followOffset;
-            transform.position += (targetPosition - transform.position) * followSharpness;
+            oldPosition = transform.position;
+            
+            transform.position += (targetPosition - transform.position) * followSharpness * Time.deltaTime;
+            velocity = transform.position - oldPosition;
         }
     }
 }

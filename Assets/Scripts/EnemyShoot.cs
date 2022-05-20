@@ -6,36 +6,47 @@ public class EnemyShoot : MonoBehaviour
 {
 
     
-    [SerializeField] float range, rangeOfShot, timeToShoot, shotSpeed;
-    [SerializeField] Transform ball, enemyFirePoint;
-    [SerializeField] GameObject movingEnemy;
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] float range, timeToShoot, shotSpeed;
+    [SerializeField] Transform enemyFirePoint;
+    [SerializeField] private float speed;
+    GameObject ball;
+    Rigidbody2D rb;
     private float distanceToPlayer;
     public GameObject enemyBullet;
     
+    IEnumerator ShootCoroutine;
+
+    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
     {
+        ball = GameObject.Find("Ball");
         rb = GetComponent<Rigidbody2D>();
+        ShootCoroutine = Shoot();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        distanceToPlayer = Vector2.Distance(rb.transform.position, ball.position);
+        distanceToPlayer = Vector2.Distance(rb.transform.position, ball.transform.position);
 
-        if (distanceToPlayer <= range) {
-            StartCoroutine(Shoot());
+        if (distanceToPlayer <= range && isShooting == false) {
+            StartCoroutine(ShootCoroutine);
+            isShooting = true;
         }
  
     }
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(timeToShoot);
-        GameObject newBullet = Instantiate(enemyBullet, enemyFirePoint.position, Quaternion.identity);
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(ball.transform.position.x, shotSpeed);
+        while (true) {
+            yield return new WaitForSeconds(timeToShoot);
+            Vector3 dist = (ball.transform.position - transform.position + (Vector3)ball.GetComponent<FollowScript>().velocity * speed).normalized * shotSpeed;
+            GameObject newBullet = Instantiate(enemyBullet, enemyFirePoint.position, Quaternion.identity);
+            newBullet.GetComponent<Rigidbody2D>().velocity = dist;
+            Destroy(newBullet, 2f);
+        }
     }
 
     
