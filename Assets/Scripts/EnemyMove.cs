@@ -10,11 +10,11 @@ public class EnemyMove : MonoBehaviour
     bool HasSpawned = false;
 
     private Vector3 spawnPosition = new Vector3(0f, 12f, 0f);
-    private Vector3 pos1 = new Vector3(0f, 8.5f, 0f);
+    private Vector3 pos1 = new Vector3(0f, 27f, 0f);
 
     IEnumerator MoveEnemyCoroutine;
 
-    Vector3[] Positions = {new Vector3(-10f, 8.5f, 0f), new Vector3(10f, 8.5f, 0f)};
+    Vector3[] Positions = {new Vector3(-10f, 27f, 0f), new Vector3(10f, 27f, 0f)};
 
     // Start is called before the first frame update
     void Start()

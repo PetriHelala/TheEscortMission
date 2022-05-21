@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - EnemyBullet
   - Barrier
+  - EndCollider
   layers:
   - Default
   - TransparentFX

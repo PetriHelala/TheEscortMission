@@ -47,6 +47,8 @@ public class EnemyShoot : MonoBehaviour
             newBullet.GetComponent<Rigidbody2D>().velocity = dist;
             Destroy(newBullet, 2f);
         }
+
+        
     }
 
     
