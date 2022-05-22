@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    [SerializeField] AudioSource _audiosource;
     public Transform firePoint;
     public GameObject bulletPrefab;
     [SerializeField] float bulletForce = 5f;
     PlayerController _playercontroller;  
     GameObject bullet;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _playercontroller = GetComponent<PlayerController>();
+        _audiosource = GetComponent<AudioSource>();
     }
 
     void ShootBullet()
     {
         bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        _audiosource.Play();
         firePoint.transform.localPosition = new Vector3(0f, 0f, 0.5f);
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
@@ -29,7 +33,9 @@ public class Shoot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            
             ShootBullet();
+            
             
         }
     }

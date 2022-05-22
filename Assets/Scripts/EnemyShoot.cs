@@ -18,11 +18,14 @@ public class EnemyShoot : MonoBehaviour
 
     bool isShooting;
 
+    [SerializeField] AudioSource _audiosource;
+
     // Start is called before the first frame update
     void Start()
     {
         ball = GameObject.Find("Ball");
         rb = GetComponent<Rigidbody2D>();
+        _audiosource = GetComponent<AudioSource>();
         ShootCoroutine = Shoot();
     }
 
@@ -45,6 +48,7 @@ public class EnemyShoot : MonoBehaviour
             Vector3 dist = (ball.transform.position - transform.position + (Vector3)ball.GetComponent<FollowScript>().velocity * speed).normalized * shotSpeed;
             GameObject newBullet = Instantiate(enemyBullet, enemyFirePoint.position, Quaternion.identity);
             newBullet.GetComponent<Rigidbody2D>().velocity = dist;
+            _audiosource.Play();
             Destroy(newBullet, 2f);
         }
 
