@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private float enemyHealth;
+    [SerializeField] float enemyHealth = 50f;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyHealth = 30f;
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
