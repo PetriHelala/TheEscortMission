@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] AudioSource _audiosource;
     public float health;
     public float maxHealth = 100f;
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        _audiosource = GetComponent<AudioSource>();
         health = maxHealth;
 
     }
@@ -19,7 +20,8 @@ public class PlayerHealth : MonoBehaviour
     public void Damage(float damage)
     {
         health += damage;
-
+        _audiosource.Play();
+        
         if (health > maxHealth) {
 
             health = maxHealth;
