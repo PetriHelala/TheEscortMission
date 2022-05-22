@@ -13,12 +13,10 @@ public class EnemyShoot : MonoBehaviour
     Rigidbody2D rb;
     private float distanceToPlayer;
     public GameObject enemyBullet;
-    
     IEnumerator ShootCoroutine;
-
     bool isShooting;
-
-    [SerializeField] AudioSource _audiosource;
+    [SerializeField] AudioClip shootsound; 
+    AudioSource _audiosource;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +48,7 @@ public class EnemyShoot : MonoBehaviour
             GameObject newBullet2 = Instantiate(enemyBullet, enemyFirePoint2.position, Quaternion.identity);
             newBullet.GetComponent<Rigidbody2D>().velocity = dist;
             newBullet2.GetComponent<Rigidbody2D>().velocity = dist;
-            _audiosource.Play();
+            _audiosource.PlayOneShot(shootsound, 0.5f);
             Destroy(newBullet, 2f);
             Destroy(newBullet2, 2f);
         }

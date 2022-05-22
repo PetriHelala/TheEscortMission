@@ -5,8 +5,9 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float enemyHealth = 50f;
-    [SerializeField] AudioSource _audiosource;
-    [SerializeField] AudioSource _audiosource2;
+    [SerializeField] AudioClip hurtsound;
+    [SerializeField] AudioClip deathsound;
+    AudioSource _audiosource;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +20,13 @@ public class EnemyHealth : MonoBehaviour
 
         if (other.tag == "Bullet") {
             enemyHealth -= 10f;
-            _audiosource2.Play();
+            _audiosource.PlayOneShot(hurtsound, 0.5f);
             Debug.Log($"{enemyHealth}");
 
         } 
         
         if (enemyHealth <= 0f) {
-            _audiosource.Play();
+            _audiosource.PlayOneShot(deathsound, 0.3f);
             Destroy(gameObject, 0.2f);
             Debug.Log("dead");  
 

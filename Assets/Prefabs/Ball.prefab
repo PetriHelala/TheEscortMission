@@ -236,9 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1ce0e2e57cf2a4d9b3c10eb93791e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtsound: {fileID: 8300000, guid: 413bfc742bbce08409c4caee3e849ab9, type: 3}
+  deathsound: {fileID: 8300000, guid: 35357b98df07fd749adadf1a9868424a, type: 3}
   health: 0
   maxHealth: 100
-  _audiosource: {fileID: 202658373}
 --- !u!82 &202658373
 AudioSource:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 35357b98df07fd749adadf1a9868424a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

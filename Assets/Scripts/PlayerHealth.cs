@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] AudioSource _audiosource;
+    
+    [SerializeField] AudioClip hurtsound;
+    [SerializeField] AudioClip deathsound;
+    AudioSource _audiosource;
     public float health;
     public float maxHealth = 100f;
 
@@ -20,13 +23,16 @@ public class PlayerHealth : MonoBehaviour
     public void Damage(float damage)
     {
         health += damage;
-        _audiosource.Play();
+
+        _audiosource.PlayOneShot(hurtsound, 0.5f);
         
         if (health > maxHealth) {
 
             health = maxHealth;
 
         } else if (health <= 0f) {
+
+            _audiosource.PlayOneShot(deathsound, 0.5f);
 
             health = 0f;
 
