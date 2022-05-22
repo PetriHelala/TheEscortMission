@@ -21,7 +21,7 @@ public class ExitGameWithEscape : MonoBehaviour
 
     public void ReturnToMainMenu() 
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Fire3")) {
             // Application.Quit();
             SceneManager.LoadScene("Menu");
         }
