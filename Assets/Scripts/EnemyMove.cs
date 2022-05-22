@@ -26,7 +26,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
 
-        if (Time.time >= 5.0f && HasSpawned == false) {
+        if (Time.time >= 1.0f && HasSpawned == false) {
             HasSpawned = true;
             EnemySpawnAndMove(); 
         }

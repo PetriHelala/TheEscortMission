@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd88d5e2fa7ed2a40aa747f60d945cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 100
+  enemyHealth: 300
   _audiosource: {fileID: -2825483776774999200}
   _audiosource2: {fileID: -3450956492063119874}
 --- !u!114 &508253709687324670
